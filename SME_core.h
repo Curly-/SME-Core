@@ -9,14 +9,15 @@
 #define	CORE_H
 
 namespace SME { namespace Core {
+    typedef void (*FuncPointer)();
+    
+    void init();
+    
     void start();
+    void stop();
     
-    bool running = true;
-    long long ticks = 0;
-    long long frames = 0;
-    
-    long fps;
-    long tps;
+    void addLoopUpdateHook(FuncPointer func);
+    void addLoopRenderHook(FuncPointer func);
 }}
 
 #endif	/* CORE_H */
