@@ -23,6 +23,7 @@ namespace SME { namespace Events {
         SME_MOUSE_MOUSEUP,
         SME_MOUSE_MOUSEDOWN,
         SME_MOUSE_MOVE,
+        SME_MOUSE_WHEEL,
         
         SME_KEYBOARD,
         SME_KEYBOARD_KEYDOWN,
@@ -48,7 +49,7 @@ namespace SME { namespace Events {
         int y;
         int xdelta;
         int ydelta;
-        int dir;
+        int scroll;
         int button;
     } MouseEvent;
     typedef struct KeyboardEvent {
@@ -56,13 +57,14 @@ namespace SME { namespace Events {
         unsigned long time;
         EventType event;
         bool repeated;
-        SME::Keyboard::Scancode scancode;
+        SME::Keyboard::Key scancode;
+        SME::Keyboard::Key keycode;
     } KeyboardEvent;
     typedef union Event {
         EventType type;
         GenericEvent genericEvent;
         WindowEvent windowEvent;
-        MouseEvent clickEvent;
+        MouseEvent mouseEvent;
         KeyboardEvent keyboardEvent;
     } Event;
 }}
