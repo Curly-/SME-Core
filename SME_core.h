@@ -11,13 +11,24 @@
 namespace SME { namespace Core {
     typedef void (*FuncPointer)();
     
+    /*
+     * Initialises all Core components
+     */
     void init();
     
+    /*
+     * Starts the game loop
+     */
     void start();
+    
+    /*
+     * Stops the game loop
+     */
     void stop();
     
     void addLoopUpdateHook(FuncPointer func);
     void addLoopRenderHook(FuncPointer func);
+    void addCleanupHook(FuncPointer func);
 }}
 
 #endif	/* CORE_H */

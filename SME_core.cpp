@@ -18,13 +18,15 @@ unsigned long long lastTicks = 0;
 
 std::vector<SME::Core::FuncPointer> updateFuncs;
 std::vector<SME::Core::FuncPointer> renderFuncs;
+std::vector<SME::Core::FuncPointer> cleanupFuncs;
+#define CALLFUNCPOINTERS(name) for(FuncPointer f : name) f()
 
 void SME::Core::init() {
     SME::Events::init();
 }
 
 void SME::Core::start() {
-    second.reset();
+    second.reset(); //reset timers to initialise them (otherwise undefined)
     second.start();
     updateTick.reset();
     updateTick.start();
@@ -36,15 +38,11 @@ void SME::Core::start() {
         while (time >= 1000 / 60.f) {
             time -= 1000 / 60.f;
 
-            for (FuncPointer f : updateFuncs) {
-                f();
-            }
+            CALLFUNCPOINTERS(updateFuncs);
             ticks++;
         }
 
-        for (FuncPointer f : renderFuncs) {
-            f();
-        }
+        CALLFUNCPOINTERS(renderFuncs);
         //swap
         frames++;
 
@@ -61,6 +59,7 @@ void SME::Core::start() {
 
 void SME::Core::stop() {
     running = false;
+    CALLFUNCPOINTERS(cleanupFuncs);
 }
 
 void SME::Core::addLoopUpdateHook(FuncPointer func) {
@@ -69,4 +68,8 @@ void SME::Core::addLoopUpdateHook(FuncPointer func) {
 
 void SME::Core::addLoopRenderHook(FuncPointer func) {
     renderFuncs.push_back(func);
+}
+
+void SME::Core::addCleanupHook(FuncPointer func) {
+    cleanupFuncs.push_back(func);
 }

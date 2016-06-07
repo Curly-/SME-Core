@@ -2,8 +2,8 @@
 #include "SME_timer.h"
 #include <deque>
 
-std::deque<SME::Events::Event> events;
-SME::Timer eventTimer;
+std::deque<SME::Events::Event> events; //stores events in order of creation
+SME::Timer eventTimer; //used to track when an event was created relative to when the game was started
 
 void SME::Events::init() {
     eventTimer.reset();

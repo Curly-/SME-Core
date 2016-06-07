@@ -8,10 +8,10 @@
 #ifndef SME_KEYBOARD_H
 #define	SME_KEYBOARD_H
 
-#include <SME_scancodes.h>
+#include <SME_keys.h>
 
 namespace SME { namespace Keyboard {
-    bool KeyStates [sizeof(SME::Keyboard::OSScancodeTable) / sizeof(SME::Keyboard::Key::SME_VK_UNKNOWN)] {
+    bool KeyStates [sizeof(SME::Keyboard::OSScancodeTable) / sizeof(SME::Keyboard::Key::SME_KEY_UNKNOWN)] {
         false
     };
 }}

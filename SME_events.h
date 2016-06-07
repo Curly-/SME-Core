@@ -11,8 +11,20 @@
 #include "SME_event_types.h"
 
 namespace SME { namespace Events {
+    /*
+     * Initialises events
+     */
     void init();
+    
+    /*
+     * Sets event to the next event in the deque and removes it
+     * \return whether there are any more events to be returned
+     */
     bool getEvent(Event &event);
+    
+    /*
+     * Adds an event to the deque
+     */
     void createEvent(Event event);
 }}
 

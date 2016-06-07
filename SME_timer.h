@@ -4,9 +4,21 @@
 namespace SME {
     class Timer {
     public:
+        /*
+         * Start timer
+         */
         void start();
+        /*
+         * Freezes timer
+         */
         void stop();
+        /*
+         * Resets the timer to 0
+         */
         void reset();
+        /*
+         * Returns the time since the timer was started in milliseconds
+         */
         unsigned long getTime();
     private:
         bool running;
