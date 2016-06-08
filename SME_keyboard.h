@@ -11,9 +11,7 @@
 #include <SME_keys.h>
 
 namespace SME { namespace Keyboard {
-    bool KeyStates [sizeof(SME::Keyboard::OSScancodeTable) / sizeof(SME::Keyboard::Key::SME_KEY_UNKNOWN)] {
-        false
-    };
+    extern bool KeyStates [sizeof(SME::Keyboard::OSScancodeTable) / sizeof(SME::Keyboard::KEY_UNKNOWN)];
 }}
 
 #endif	/* SME_KEYBOARD_H */
