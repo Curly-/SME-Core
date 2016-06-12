@@ -245,7 +245,7 @@ namespace SME {
             KEY_F18,
             KEY_F19
 #elif defined __linux__
-
+            KEY_UNKNOWN //also known as go fuck yourself
 #endif
         };
 
@@ -477,7 +477,7 @@ namespace SME {
             KEY_GRAVE
 
 #elif defined __linux__
-
+           KEY_UNKNOWN //also known as go fuck yourself
 #endif
         };
     }
