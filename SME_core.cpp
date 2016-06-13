@@ -55,11 +55,12 @@ void SME::Core::start() {
 //            std::cout << "TPS: " << tps << ", FPS: " << fps << std::endl;
         }
     }
+    
+    CALLFUNCPOINTERS(cleanupFuncs);
 }
 
 void SME::Core::stop() {
     running = false;
-    CALLFUNCPOINTERS(cleanupFuncs);
 }
 
 void SME::Core::addLoopUpdateHook(FuncPointer func) {
