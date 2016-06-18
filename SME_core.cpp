@@ -1,6 +1,7 @@
 #include "SME_core.h"
 #include "SME_timer.h"
 #include "SME_events.h"
+#include "SME_config.h"
 #include <iostream>
 #include <vector>
 
