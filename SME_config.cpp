@@ -1,4 +1,5 @@
 #include "SME_config.h"
+#include "SME_util.h"
 #include <map>
 #include <fstream>
 #include <cstring>
@@ -123,27 +124,6 @@ void SME::Config::saveFile(std::string path) {
 }
 
 /*
- * Remove any whitespace from both sides of the string (eg "   xyz  "->"xyz")
- */
-std::string trim(std::string str) {
-    std::string output = "";
-    std::string sls = "";
-    bool first = true;
-    for (char c : str) {
-        if (c != ' ') {
-            sls += c;
-            output += sls;
-            sls = "";
-
-            first = false;
-            continue;
-        }
-        if (!first) sls += c;
-    }
-    return output;
-}
-
-/*
  * Determines if a string represents an integer
  * \return true if string represents an integer
  */
@@ -182,8 +162,8 @@ void SME::Config::loadFile(std::string path) {
     std::ifstream in(path);
     std::string line;
     while (std::getline(in, line)) {
-        std::string key = trim(line.substr(0, line.find('=')));
-        std::string val = trim(line.substr(line.find('=') + 1)); //+1 to remove "
+        std::string key = SME::Util::trim(line.substr(0, line.find('=')));
+        std::string val = SME::Util::trim(line.substr(line.find('=') + 1)); //+1 to remove "
 
         if ((val.at(0) == '"' && val.at(val.length() - 1) == '"')
                 || (val.at(0) == '\'' && val.at(val.length() - 1) == '\'')) {

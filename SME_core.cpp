@@ -44,16 +44,15 @@ void SME::Core::start() {
         }
 
         CALLFUNCPOINTERS(renderFuncs);
-        //swap
         frames++;
 
-        if (second.getTime() > 1000 && false) {
+        if (second.getTime() > 1000) {
             fps = frames - lastFrames;
             lastFrames = frames;
             tps = ticks - lastTicks;
             lastTicks = ticks;
             second.reset();
-//            std::cout << "TPS: " << tps << ", FPS: " << fps << std::endl;
+            std::cout << "TPS: " << tps << ", FPS: " << fps << std::endl;
         }
     }
     
