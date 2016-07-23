@@ -44,6 +44,8 @@ namespace SME {
                 
                 void addAttachment(Attachment *att);
                 void removeAttachment(Attachment *att);
+                
+                virtual ~Entity();
             };
 
             template<typename T>

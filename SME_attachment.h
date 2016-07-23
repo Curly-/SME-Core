@@ -20,6 +20,7 @@ namespace SME {
                 virtual void onVelChanged(glm::vec3 vel) = 0;
                 virtual void onRotChanged(glm::vec3 rot) = 0;
                 virtual void onUpdate() = 0;
+                virtual ~Attachment();
             private:
                 const Entity *entity;
             };

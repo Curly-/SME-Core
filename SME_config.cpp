@@ -128,7 +128,7 @@ void SME::Config::saveFile(std::string path) {
  * \return true if string represents an integer
  */
 bool isInt(std::string str) {
-    for (int i = 0; i < str.length(); i++) {
+    for (unsigned int i = 0; i < str.length(); i++) {
         char c = str.at(i);
         if (c == '-' && i == 0) {
             continue;
@@ -145,7 +145,7 @@ bool isInt(std::string str) {
  */
 bool isDecimal(std::string str) {
     int d = 0;
-    for (int i = 0; i < str.length(); i++) {
+    for (unsigned int i = 0; i < str.length(); i++) {
         char c = str.at(i);
         if (c == '.') {
             d++;

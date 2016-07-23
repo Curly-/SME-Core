@@ -73,6 +73,12 @@ void Entity::removeAttachment(Attachment *att) {
     delete att;
 }
 
+Entity::~Entity() {
+    for (Attachment *att : attachments) {
+        delete att;
+    }
+}
+
 std::map<std::string, Entity*(*)() > declaredEntities;
 
 void SME::Level::Entity::_declareEntityType(std::string uid, Entity*(* e)()) {
