@@ -1,6 +1,6 @@
 #include "SME_core.h"
 #include "SME_timer.h"
-#include "SME_events.h"
+#include "SME_event.h"
 #include "SME_config.h"
 #include <iostream>
 #include <vector>
@@ -23,7 +23,6 @@ std::vector<SME::Core::FuncPointer> cleanupFuncs;
 #define CALLFUNCPOINTERS(name) for(FuncPointer f : name) f()
 
 void SME::Core::init() {
-    SME::Events::init();
 }
 
 void SME::Core::start() {
