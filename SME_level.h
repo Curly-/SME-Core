@@ -18,7 +18,7 @@ namespace SME {
         class Level {
         private:
             std::map<std::string, void *> parameters;
-            std::vector<Entity *> entities; //TODO optimise this using octrees or something
+            std::vector<Entity::Entity *> entities; //TODO optimise this using octrees or something
 
         public:
             template<typename T>
@@ -35,8 +35,8 @@ namespace SME {
             
             void update();
             
-            void addEntity(std::string uid);
-            void addEntity(Entity *entity);
+            Entity::Entity *addEntity(std::string uid);
+            void addEntity(Entity::Entity *entity);
             
             Level();
             ~Level();
