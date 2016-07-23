@@ -1,1 +1,1 @@
-# SME-Core
+# SME_Core
