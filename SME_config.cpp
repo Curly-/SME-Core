@@ -31,6 +31,9 @@ template<typename T>
 void regVal(std::string name, T t, std::string type) {
     Data *data = &vals[name];
     data->type = type;
+    if (data->v != nullptr) { //if vals[name] is being replaced
+        free(data->v);
+    }
     data->v = malloc(sizeof t);
     memcpy(data->v, &t, sizeof t);
 }
@@ -46,6 +49,9 @@ template<>
 void regVal<char const *>(std::string name, char const *t, std::string type) {
     Data *data = &vals[name];
     data->type = type;
+    if (data->v != nullptr) { //if vals[name] is being replaced
+        free(data->v);
+    }
     data->v = malloc(sizeof t);
     strcpy((char *)data->v, t);
 }

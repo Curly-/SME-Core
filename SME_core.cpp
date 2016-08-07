@@ -51,7 +51,7 @@ void SME::Core::start() {
             tps = ticks - lastTicks;
             lastTicks = ticks;
             second.reset();
-            std::cout << "TPS: " << tps << ", FPS: " << fps << std::endl;
+//            std::cout << "TPS: " << tps << ", FPS: " << fps << std::endl;
         }
     }
     

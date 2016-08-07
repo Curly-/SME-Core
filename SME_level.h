@@ -9,6 +9,7 @@
 #define	LEVEL_H
 
 #include <map>
+#include <cstring>
 #include <string>
 #include <vector>
 #include "SME_entity.h"

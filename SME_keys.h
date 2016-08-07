@@ -139,7 +139,6 @@ namespace SME {
 #if defined _WIN32
             KEY_UNKNOWN,
             KEY_ESCAPE,
-            KEY_0,
             KEY_1,
             KEY_2,
             KEY_3,
@@ -149,6 +148,7 @@ namespace SME {
             KEY_7,
             KEY_8,
             KEY_9,
+            KEY_0,
             KEY_MINUS,
             KEY_EQUALS,
             KEY_BACKSPACE,
