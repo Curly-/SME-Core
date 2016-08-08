@@ -39,6 +39,9 @@ namespace SME {
                 void setPos(glm::vec3 pos);
                 void setVel(glm::vec3 vel);
                 void setRot(glm::vec3 rot);
+                
+                glm::vec3 getForwardVector();
+                glm::vec3 getUpwardVector();
 
                 virtual void update() = 0;
                 

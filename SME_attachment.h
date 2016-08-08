@@ -21,8 +21,8 @@ namespace SME {
                 virtual void onRotChanged(glm::vec3 rot) = 0;
                 virtual void onUpdate() = 0;
                 virtual ~Attachment();
-            private:
-                const Entity *entity;
+            protected:
+                Entity *entity;
             };
         }
     }
