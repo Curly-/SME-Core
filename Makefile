@@ -2,7 +2,6 @@ CPPS= $(wildcard *.cpp)
 OBJS= $(CPPS:.cpp=.o)
 CFLAGS= -std=c++0x -Wall -g -fPIC
 LFLAGS= -shared
-CC= g++
 INCLUDE=
 LIBS=
 OBJDIR=objects/
@@ -26,7 +25,7 @@ mkdirs:
 	mkdir objects
 
 $(OUT):$(OBJS)
-	$(CC) $(LFLAGS) -o $(OUT) $(addprefix $(OBJDIR), $(OBJS))
+	$(CXX) $(LFLAGS) -o $(OUT) $(addprefix $(OBJDIR), $(OBJS))
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)$@ $<
+	$(CXX) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)$@ $<
