@@ -3,4 +3,7 @@ dist/
 nbproject/
 .dep.inc
 lib/
-Makefile
+NBMakefile
+*.swp
+libSME_Core.so
+objects/
