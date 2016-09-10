@@ -1,31 +1,39 @@
 CPPS= $(wildcard *.cpp)
-OBJS= $(CPPS:.cpp=.o)
+OBJDIR=build/
+OBJS= $(patsubst %.cpp,$(OBJDIR)%.o,$(CPPS))
 CFLAGS= -std=c++0x -Wall -g -fPIC
 LFLAGS= -shared
-INCLUDE=
+DEPENDS=
+INCLUDES=$(DEPENDS)
 LIBS=
-OBJDIR=objects/
-OUT=libSME_Core.so
+OUT=$(OBJDIR)libSME_Core.so
+-include Makefile-conf
 
-all: mkdirs $(OBJS) libSME_Core.so
+all: DEPENDS mkdirs $(OBJS) $(OUT)
 
-clean:
-	rm -rf $(OBJDIR) &&\
-        rm -f $(OUT) 
+clean: DEPENDS
+	rm -f $(OUT) &&\
+	rm -rf $(OBJDIR)
+
+DEPENDS:
+ifeq ($(CONF), Debug)
+	$(foreach DIR,$(filter-out $(PAR), $(DEPENDS)),\
+        cd $(DIR) && $(MAKE) PAR="$(join $(DEPENDS), $(PAR))" $(MAKECMDGOALS);)
+endif
 
 install:
 	cp $(OUT) /lib
 
 uninstall:
 	rm -f /lib/$(OUT)
-        
+
 .PHONY: all clean install uninstall
 
 mkdirs:
-	mkdir objects
+	mkdir -p $(OBJDIR)
 
 $(OUT):$(OBJS)
-	$(CXX) $(LFLAGS) -o $(OUT) $(addprefix $(OBJDIR), $(OBJS))
+	$(CXX) -o $(OUT) $(OBJS) $(LFLAGS)
 
-%.o: %.cpp
-	$(CXX) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)$@ $<
+$(OBJDIR)%.o: %.cpp
+	$(CXX) $(CFLAGS) $(subst ../,-I../,$(INCLUDES)) -c -o $@ $<

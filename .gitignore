@@ -1,9 +1,5 @@
 build/
-dist/
 nbproject/
 .dep.inc
-lib/
-NBMakefile
 *.swp
-libSME_Core.so
-objects/
+Makefile-conf
